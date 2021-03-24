@@ -1,0 +1,38 @@
+{% extends 'home/base.html' %}
+
+{% block head_title %}Transaction Report{% endblock %}
+{% load static %}
+{% block content %}
+    {% include 'home/nav.html' %}
+    <div class="container">
+        <h1 class="center">Transaction Report</h1>
+            <table class="table">
+              <thead >
+                 <tr>
+                    <th scope="col">Transaction Type</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Balance After Transaction</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for transaction in object_list %}
+                  <tr>
+                    <th scope="row">{{ transaction.get_transaction_type_display }}</th>
+                    <td>{{ transaction.timestamp }}</td>
+                    <td class="{% if transaction.get_transaction_type_display == 'Deposit' %} text-success {% else %} text-danger {% endif %}">₹ {{ transaction.amount }}</td>
+                    <td class="text-primary">₹ {{ transaction.balance_after_transaction }}</td>
+                  </tr>
+                  {% endfor %}
+                  <tr >
+                    <th colspan="3">Final Balance</th>
+                    <th >₹ {{ account.balance }}</th>
+                </tr>
+              </tbody>
+          </table>
+    </div>
+
+        
+{% endblock %}
+
+

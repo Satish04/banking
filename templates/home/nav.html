@@ -1,0 +1,21 @@
+
+{% load static %}
+
+{% block content %}
+<!-- <link rel="stylesheet" href="{% static 'css/bootstrp.css' %}">
+<link rel="stylesheet" href="{% static 'css/loginsignup.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}"> -->
+<link rel="stylesheet" href="{% static 'css/tables.css' %}">
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <h5 class="my-0 mr-md-auto font-weight-normal">ABC BANK</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="{% url 'transactions:transaction_report' %}">Report</a> 
+        <a class="p-2 text-dark" href="{% url 'transactions:deposit_money' %}">Deposite</a>
+        <a class="p-2 text-dark" href="{% url 'transactions:withdraw_money' %}">Withdrow</a>
+        <a class="p-2 text-dark" href="{% url 'transactions:enquery' %}">Enquery</a>
+    </nav>
+    <a class="btn btn-outline-primary" href="{% url 'accounts:user_logout' %}">Log Out</a>
+  </div>
+
+
+{% endblock %}

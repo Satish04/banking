@@ -1,0 +1,31 @@
+{% extends 'home/base.html' %}
+
+{% block head_title %}Banking System{% endblock %}
+
+{% block content %}
+{% include 'home/navbar.html' %}
+<form class="form-signin" method="post"> 
+    {% csrf_token %}
+        {% for hidden_field in form.hidden_fields %}
+            {{ hidden_field.errors }}
+            {{ hidden_field }}
+        {% endfor %}
+        {% for field in form.visible_fields %}
+        <div class="mb-4">
+            <label  for="{{ field.id_for_label }}">
+                {{ field.label }}
+            </label>
+            <input name="{{ field.name }}" id="{{ field.id_for_label }}" type="{{ field.widget_type }}">
+        </div>
+            {% if field.errors %}
+                {% for error in field.errors %}
+                <p >{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+
+        <div >
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </div>
+  </form>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'home/base.html' %}
+
+{% block head_title %}Transaction Report{% endblock %}
+{% load static %}
+{% block content %}
+    {% include 'home/nav.html' %}
+    <div class="container">
+
+        Final Balance <span class="text-success">₹ {{ account.balance }}</span>
+    
+    </div>
+
+{% endblock %}

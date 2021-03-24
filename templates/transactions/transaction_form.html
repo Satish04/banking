@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+
+{% block head_title %}{{ title }}{% endblock %}
+
+{% block content %}
+{% include 'home/nav.html'%}
+    <h5 ><center>{{ title }}</center></h5>
+    <div class="container">
+        <form class="form-signin" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-2">Amount</div>
+                <div class="col-4">
+                        <input  class="form-control"  name="amount" id="amount" type="number" required placeholder="Amount">
+                </div>
+                    {% if form.amount.errors %}
+                        {% for error in form.amount.errors %}
+                        <p class="">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                 <div class="col-3"><button class="btn btn-sm btn-primary btn-block" type="submit"> Submit</button></div>
+            </div>
+        </form>
+    </div>
+
+
+{% endblock %}
